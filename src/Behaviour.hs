@@ -40,3 +40,7 @@ class Combine a where
 instance Combine a => Combine(Animation a) where
   combine = lift0(combine)
   over = lift2(over)
+
+timeTrans :: Animation Time -> Animation a -> Animation a
+timeTrans btime ba = Animation (animation(ba).animation(btime))
+
