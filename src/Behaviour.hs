@@ -1,6 +1,8 @@
 module Behaviour(Animation, Combine, getFrame, time, 
   translateTime, lift0, lift1, lift2) where
 
+import Data.Functor
+
 
 newtype Animation a = Animation{animation :: Time -> a}
 type Time = Float
@@ -43,4 +45,7 @@ instance Combine a => Combine(Animation a) where
 
 timeTrans :: Animation Time -> Animation a -> Animation a
 timeTrans btime ba = Animation (animation(ba).animation(btime))
+
+instance Functor(Animation) where
+  fmap = lift1 
 
