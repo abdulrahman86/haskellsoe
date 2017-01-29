@@ -47,5 +47,7 @@ timeTrans :: Animation Time -> Animation a -> Animation a
 timeTrans btime ba = Animation (animation(ba).animation(btime))
 
 instance Functor(Animation) where
-  fmap = lift1 
+  fmap = lift1
+
+
 
